@@ -106,3 +106,5 @@ ENV/
 environment.sh
 
 .vagrant
+
+.vault_pass

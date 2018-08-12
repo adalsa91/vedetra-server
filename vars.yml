@@ -1,0 +1,2 @@
+---
+vedetra_postgres_pass: "{{ vault_vedetra_postgres_pass }}"
