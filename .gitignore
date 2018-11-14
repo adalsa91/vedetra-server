@@ -103,7 +103,7 @@ ENV/
 #Pycharm
 .idea/
 
-environment.sh
+environment.env
 
 .vagrant
 

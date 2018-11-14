@@ -1,6 +1,7 @@
 from _datetime import datetime
 from flask import Flask, request, render_template
 from . import main
+from .. import db
 
 @main.route('/', methods=['GET', 'POST'])
 def index():

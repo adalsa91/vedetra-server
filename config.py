@@ -6,6 +6,7 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'I)PzwY6;Hom?@0pe1^Ot`-A{`XQSivz:B`;z^":u;S6o:@E.Y2<'
     WTF_CSRF_ENABLED = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     #Permite a la aplicación personalizar la configuración
     @staticmethod
