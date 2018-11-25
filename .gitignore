@@ -108,3 +108,7 @@ environment.env
 .vagrant
 
 .vault_pass
+
+todo.txt
+stuff
+.sqlite
