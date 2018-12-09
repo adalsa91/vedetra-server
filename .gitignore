@@ -112,3 +112,4 @@ environment.env
 todo.txt
 stuff
 .sqlite
+pgdata

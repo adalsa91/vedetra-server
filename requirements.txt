@@ -2,5 +2,4 @@ Flask
 Flask-SQLAlchemy
 flask-bootstrap
 psycopg2
-flask-sqlalchemy
 Flask-Migrate

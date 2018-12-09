@@ -1,0 +1,12 @@
+version: '3'
+services:
+  vedetra:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file: "environment.env"
+
+  postgres:
+    image: "postgres:11-alpine"
+    restart: always
+    env_file: environment.env
