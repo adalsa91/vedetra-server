@@ -3,3 +3,5 @@ Flask-Bootstrap==3.3.7.1
 Flask-Migrate==2.2.1
 Flask-SQLAlchemy==2.3.2
 psycopg2
+pytest==4.0.1
+
