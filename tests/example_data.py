@@ -7,11 +7,11 @@ from os import urandom
 def db_load_example_data(app, db):
     sensors = []
     for i in range(5):
-        sensors.append(Sensor(id=b2a_hex(urandom(16)), description="Sensor {}".format(i)))
+        sensors.append(Sensor(id=b2a_hex(urandom(16)).decode('ascii'), description="Sensor {}".format(i)))
 
     vehicle_detections = []
     for i in range(20):
-        vehicle_detections.append(VehicleDetection(md5_mac=b2a_hex(urandom(16)), timestamp=datetime.now(), sensor_id=sensors[i%5].id))
+        vehicle_detections.append(VehicleDetection(md5_mac=b2a_hex(urandom(16)).decode('ascii'), timestamp=datetime.now(), sensor_id=sensors[i%5].id))
 
     with app.app_context():
         db.session.add_all(sensors)
