@@ -1,8 +1,11 @@
 import os
 from app import create_app, db
 from app.models import Sensor, VehicleDetection
+from tests.example_data import db_load_example_data
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+
+#db_load_example_data(app, db)
 
 @app.shell_context_processor
 def make_shell_context():

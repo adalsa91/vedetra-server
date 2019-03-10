@@ -5,8 +5,10 @@ services:
     ports:
       - "5000:5000"
     env_file: "environment.env"
+    depends_on:
+      - "db"
 
-  postgres:
+  db:
     image: "postgres:11-alpine"
     restart: always
     env_file: environment.env
