@@ -2,7 +2,7 @@ FROM python:alpine
 
 EXPOSE 5000
 
-ENV FLASK_APP tfg-server.py
+ENV FLASK_APP vedetra-server.py
 ENV FLASK_CONFIG development
 
 RUN adduser -D vedetra
@@ -23,7 +23,7 @@ USER vedetra
 
 COPY app app
 COPY migrations migrations
-COPY tfg-server.py config.py  entrypoint.sh ./
+COPY vedetra-server.py config.py  entrypoint.sh ./
 
 ENTRYPOINT ["./entrypoint.sh"]
 
