@@ -1,6 +1,7 @@
 import pytest
-from flask import current_app, Flask
+from flask import Flask
 from app import create_app, db
+from tests.example_data import db_load_example_data
 
 
 @pytest.fixture
@@ -8,6 +9,7 @@ def app():
     app = create_app('testing')  # type: Flask
     with app.app_context():
         db.create_all()
+        db_load_example_data(app, db)
 
     yield app
 
