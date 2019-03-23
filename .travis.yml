@@ -6,6 +6,6 @@ install:
 env:
   global:
     - FLASK_APP=vedetra-server.py 
-    - FLASK_ENV=development
+    - FLASK_ENV=testing
 script:
   - flask test
