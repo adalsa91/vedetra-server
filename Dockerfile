@@ -4,6 +4,7 @@ EXPOSE 5000
 
 ENV FLASK_APP vedetra-server.py
 ENV FLASK_CONFIG development
+ENV FLASK_ENV development
 
 RUN adduser -D vedetra
 
