@@ -1,13 +1,15 @@
-from flask import Flask
 from config import config
+from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_marshmallow import Marshmallow
 import os
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
+ma = Marshmallow()
 
 
 def create_app(config_name='default'):
@@ -18,6 +20,7 @@ def create_app(config_name='default'):
     bootstrap.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
+    ma.init_app(app)
 
     with app.app_context():
         if os.getenv("LOAD_DUMMY_DATA", "false").lower() == "true":

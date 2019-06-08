@@ -1,7 +1,7 @@
 import pytest
 from flask import Flask
 from app import create_app, db
-from .example_data import db_load_example_data
+from tests.example_data import db_load_example_data
 
 
 @pytest.fixture
