@@ -22,11 +22,6 @@ def create_app(config_name='default'):
     migrate.init_app(app, db)
     ma.init_app(app)
 
-    with app.app_context():
-        if os.getenv("LOAD_DUMMY_DATA", "false").lower() == "true":
-            from tests.example_data import db_load_example_data
-            db_load_example_data(app, db)
-
     from .main import main as main_blueprint
     from .api import api as api_blueprint
 

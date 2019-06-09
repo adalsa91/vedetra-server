@@ -2,10 +2,6 @@ FROM python:alpine
 
 EXPOSE 5000
 
-ENV FLASK_APP vedetra-server.py
-ENV FLASK_CONFIG development
-ENV FLASK_ENV development
-
 RUN adduser -D vedetra
 
 WORKDIR /home/vedetra
@@ -16,13 +12,15 @@ RUN apk --update add --no-cache --virtual .build-deps \
     gcc \
     musl-dev \
     postgresql-dev \
+ && apk --update add --no-cache postgresql-client \
  && python -m venv venv \
  && venv/bin/pip install --no-cache-dir -r requirements.txt \
- && apk del --no-cache .build-deps 
+ && apk del --no-cache .build-deps
 
 USER vedetra
 
 COPY app app
+COPY tests tests
 COPY migrations migrations
 COPY vedetra-server.py config.py  entrypoint.sh ./
 
