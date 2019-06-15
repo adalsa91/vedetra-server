@@ -3,20 +3,11 @@ python:
   - "3.5"
 services:
   - docker
-before_install:
-  - sed -i '/env_file/d' docker-compose.yml
 install:
   - docker-compose build
 env:
   global:
-    - FLASK_APP=vedetra-server.py 
-    - FLASK_CONFIG=testing
-    - FLASK_ENV=testing
-    - DATABASE_URL=postgresql://vedetra:supersecretpassword@db/vedetra
-    - LOAD_DUMMY_DATA=true
-    - POSTGRES_HOST=db
-    - POSTGRES_USER=vedetra
-    - POSTGRES_PASSWORD=supersecretpassword
+    - COMPOSE_FILE=docker-compose.yml:docker-compose-travis.yml
 script:
   - docker-compose run --name db -d db
   - docker-compose run vedetra flask test

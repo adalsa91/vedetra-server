@@ -4,24 +4,12 @@ services:
     build: .
     ports:
       - "5000:5000"
-    environment:
-      - FLASK_APP
-      - FLASK_ENV
-      - FLASK_CONFIG
-      - DATABASE_URL
-      - LOAD_DUMMY_DATA
-      - POSTGRES_HOST
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-    env_file: "web-variables.env"
+    env_file: web-variables.env
     depends_on:
       - "db"
   db:
     image: "postgres:11-alpine"
     restart: always
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-    env_file: "db-variables.env"
+    env_file: db-variables.env
     expose:
       - 5432
