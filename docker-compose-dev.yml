@@ -1,0 +1,10 @@
+version: '3'
+services:
+  vedetra:
+    env_file: 
+      - "web-dev.env"
+      - "db-dev.env"
+    volumes:
+      - .:/home/vedetra
+  db:
+    env_file: "db-dev.env"

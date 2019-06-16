@@ -1,6 +1,8 @@
 version: '3'
 services:
   vedetra:
-    env_file: "web-variables.env.sample"
+    env_file: 
+      - "web.env.sample"
+      - "db.env.sample"
   db:
-    env_file: "db-variables.env.sample"
+    env_file: "db.env.sample"

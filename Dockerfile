@@ -2,6 +2,8 @@ FROM python:alpine
 
 EXPOSE 5000
 
+ENV VIRTUAL_ENV=/opt/venv
+
 RUN adduser -D vedetra
 
 WORKDIR /home/vedetra
@@ -13,8 +15,8 @@ RUN apk --update add --no-cache --virtual .build-deps \
     musl-dev \
     postgresql-dev \
  && apk --update add --no-cache postgresql-client \
- && python -m venv venv \
- && venv/bin/pip install --no-cache-dir -r requirements.txt \
+ && python -m venv "$VIRTUAL_ENV" \
+ && ${VIRTUAL_ENV}/bin/pip install --no-cache-dir -r requirements.txt \
  && apk del --no-cache .build-deps
 
 USER vedetra

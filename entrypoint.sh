@@ -12,7 +12,7 @@ if env | grep -q "DATABASE_URL"
     >&2 echo "Postgres is up - Ready to run flask"
 fi
 
-source venv/bin/activate
+source "$VIRTUAL_ENV"/bin/activate
 
 if [[ $# -eq 0 ]]; then
   flask db upgrade
