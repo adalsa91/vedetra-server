@@ -7,4 +7,5 @@ pytest==4.0.1
 flask-paginate==0.5.2
 flask-marshmallow==0.10.0
 marshmallow-sqlalchemy==0.16.1
+coverage==4.5.3
 
