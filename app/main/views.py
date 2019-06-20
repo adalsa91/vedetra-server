@@ -10,11 +10,6 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/base', methods=['GET', 'POST'])
-def base():
-    return render_template('base.html')
-
-
 @main.route('/detections', methods=['GET', 'POST'])
 def detections():
     page = request.args.get(get_page_parameter(), type=int, default=1)

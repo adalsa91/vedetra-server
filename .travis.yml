@@ -4,10 +4,13 @@ python:
 services:
   - docker
 install:
-  - docker-compose build
+  - pip install codecov
 env:
   global:
     - COMPOSE_FILE=docker-compose.yml:docker-compose-travis.yml
 script:
+  - docker-compose build
   - docker-compose run --name db -d db
-  - docker-compose run vedetra flask test
+  - docker-compose run vedetra flask test --coverage
+after_success:
+  - codecov

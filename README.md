@@ -3,6 +3,7 @@
 
 
 [![Build Status](https://travis-ci.org/adalsa91/vedetra-server.svg?branch=master)](https://travis-ci.org/adalsa91/vedetra-server)
+[![codecov](https://codecov.io/gh/adalsa91/vedetra-server/branch/master/graph/badge.svg)](https://codecov.io/gh/adalsa91/vedetra-server)
 
 Sistema para recolección y consulta de detecciones de dispositivos WiFI mediante API REST, también dispone de una interfaz web para visualizar los datos.
 
