@@ -3,6 +3,9 @@ python:
   - "3.5"
 services:
   - docker
+before_install:
+  - mkdir coverage
+  - chmod 777 coverage
 install:
   - pip install codecov
 env:

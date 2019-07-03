@@ -44,3 +44,5 @@ def test(coverage):
         COV.save()
         print("Coverage report:")
         COV.report()
+        with open('coverage/.coverage', 'w') as cov_file:
+            COV.report(file=cov_file)

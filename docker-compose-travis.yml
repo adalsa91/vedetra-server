@@ -4,5 +4,7 @@ services:
     env_file: 
       - "web.env.sample"
       - "db.env.sample"
+    volumes:
+      - ./coverage:/home/vedetra/coverage
   db:
     env_file: "db.env.sample"
