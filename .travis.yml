@@ -16,4 +16,4 @@ script:
   - docker-compose run --name db -d db
   - docker-compose run vedetra flask test --coverage
 after_success:
-  - codecov
+  - codecov --file coverage/.coverage
