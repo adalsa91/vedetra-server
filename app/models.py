@@ -1,5 +1,7 @@
 from . import db
 from . import ma
+from marshmallow import pre_load
+from datetime import datetime
 
 
 class Sensor(db.Model):
@@ -24,14 +26,15 @@ class Detection(db.Model):
 
 class DetectionSchema(ma.ModelSchema):
     class Meta:
-        model = Sensor
+        model = Detection
         # Fields to expose
         fields = ("md5_mac", "timestamp", "sensor_id")
-        # Smart hyperlinking
-        _links = ma.Hyperlinks(
-            {"self": ma.URLFor("api.detections")}
-        )
+
+    @pre_load
+    def convert_timestamp(self, in_data, **kwargs):
+        in_data['timestamp'] = str(datetime.fromtimestamp(float(in_data['timestamp'])))
+        return in_data
 
 
-detection_schema = DetectionSchema()
+detection_schema = DetectionSchema(dump_only=["id"])
 detections_schema = DetectionSchema(many=True)
