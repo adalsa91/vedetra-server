@@ -113,3 +113,5 @@ todo.txt
 stuff
 *.sqlite
 pgdata
+docker-compose-pro.yml
+

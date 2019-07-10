@@ -3,7 +3,6 @@ services:
   vedetra:
     env_file: 
       - "web-dev.env"
-      - "db-dev.env"
     volumes:
       - .:/home/vedetra
   db:

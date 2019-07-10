@@ -4,7 +4,7 @@ set -e
 
 if env | grep -q "DATABASE_URL"
     then
-    until PGPASSWORD="$POSTGRES_PASSWORD" psql -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -c '\q'; do
+    until psql "$DATABASE_URL" -c '\q'; do
       >&2 echo "Postgres is unavailable - sleeping"
       sleep 1
     done
@@ -16,7 +16,12 @@ source "$VIRTUAL_ENV"/bin/activate
 
 if [[ $# -eq 0 ]]; then
   flask db upgrade
-  exec flask run --host=0.0.0.0 
+
+  if [[ "$FLASK_ENV" = "production" && "$FLASK_CONFIG" = "production" ]]; then
+    exec gunicorn -b 0.0.0.0:5000 vedetra-server:app
+  else
+    exec flask run --host=0.0.0.0 
+  fi
 fi
 
 exec "$@"

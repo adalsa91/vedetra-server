@@ -1,6 +1,7 @@
 import os
 import sys
 import click
+from flask_migrate import upgrade
 
 COV = None
 if os.environ.get('FLASK_COVERAGE'):
@@ -45,3 +46,8 @@ def test(coverage):
         print("Coverage report:")
         COV.report()
 
+
+@app.cli.command()
+def deploy():
+    """Run deployment tasks."""
+    upgrade()
