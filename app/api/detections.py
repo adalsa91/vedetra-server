@@ -24,3 +24,19 @@ def new_detection():
 
     return detection_schema.jsonify(detection), 201, \
            {'Location': url_for('api.get_detection', detection_id=detection.id)}
+
+
+@api.route('/detections-collection/', methods=['POST'])
+def new_detections():
+    detections_json = []
+    for device, timestamp in request.json['detections'].items():
+        detections_json.append({
+            'md5_mac': device,
+            'timestamp': timestamp,
+            'sensor_id': request.json['node']
+        })
+    detections = detections_schema.load(detections_json).data
+    db.session.add_all(detections)
+    db.session.commit()
+
+    return detections_schema.jsonify(detections_json), 201
