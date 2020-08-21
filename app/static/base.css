@@ -5,3 +5,6 @@
 body {
     padding-top: 65px;
 }
+.data_field {
+    font-family: monospace;
+}

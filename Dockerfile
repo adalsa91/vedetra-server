@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.7.2-alpine3.8
 
 EXPOSE 5000
 
