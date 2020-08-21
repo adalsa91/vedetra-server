@@ -10,7 +10,7 @@ def get_detections():
     return detections_schema.jsonify(detections)
 
 
-@api.route('/detection/<int:detection_id>')
+@api.route('/detections/<int:detection_id>')
 def get_detection(detection_id):
     detection = Detection.query.get_or_404(detection_id)
     return detection_schema.jsonify(detection)
@@ -40,3 +40,22 @@ def new_detections():
     db.session.commit()
 
     return detections_schema.jsonify(detections_json), 201
+
+
+@api.route('/detections/<detection_id>', methods=['DELETE'])
+def delete_detection(detection_id):
+    detection = Detection.query.get_or_404(detection_id)
+    db.session.delete(detection)
+    db.session.commit()
+
+    return detection_schema.jsonify(detection), 200
+
+
+@api.route('/detections/<detection_id>', methods=['PUT'])
+def modify_detection(detection_id):
+    detection = Detection.query.get_or_404(detection_id)
+    detection_schema.load(request.json, instance=detection, partial=True)
+    db.session.commit()
+
+    return detection_schema.jsonify(detection), 200, \
+           {'Location': url_for('api.get_detection', detection_id=detection.id)}

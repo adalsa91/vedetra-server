@@ -28,7 +28,7 @@ class DetectionSchema(ma.ModelSchema):
     class Meta:
         model = Detection
         # Fields to expose
-        fields = ("md5_mac", "timestamp", "sensor_id")
+        fields = ("id", "md5_mac", "timestamp", "sensor_id")
 
     @pre_load
     def convert_timestamp(self, in_data, **kwargs):
@@ -36,5 +36,14 @@ class DetectionSchema(ma.ModelSchema):
         return in_data
 
 
+class SensorSchema(ma.ModelSchema):
+    class Meta:
+        model = Sensor
+        # Fields to expose
+        fields = ("id", "description")
+
+
 detection_schema = DetectionSchema(dump_only=["id"])
 detections_schema = DetectionSchema(many=True)
+sensor_schema = SensorSchema(dump_only=["detections"])
+sensors_schema = SensorSchema(many=True)
