@@ -7,7 +7,7 @@ COV = None
 if os.environ.get('FLASK_COVERAGE'):
     import coverage
 
-    COV = coverage.coverage(branch=True, include='app/*', data_file='./coverage/.coverage')
+    COV = coverage.coverage(branch=True, source=['app'], include='app/*', data_file='./coverage/.coverage')
     COV.start()
 
 from app import create_app, db
