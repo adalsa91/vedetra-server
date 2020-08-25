@@ -1,7 +1,6 @@
 from flask import request, render_template, redirect, url_for
 from flask_paginate import Pagination, get_page_parameter
 from . import main
-
 from ..models import Sensor, Detection
 
 
