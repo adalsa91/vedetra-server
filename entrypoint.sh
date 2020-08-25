@@ -18,7 +18,7 @@ if [[ $# -eq 0 ]]; then
   flask db upgrade
 
   if [[ "$FLASK_ENV" = "production" && "$FLASK_CONFIG" = "production" ]]; then
-    exec gunicorn -b 0.0.0.0:5000 vedetra-server:app
+    exec gunicorn -b 0.0.0.0:${PORT:-5000} vedetra-server:app
   else
     exec flask run --host=0.0.0.0 
   fi
