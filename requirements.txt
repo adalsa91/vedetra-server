@@ -3,7 +3,7 @@ Flask-Bootstrap==3.3.7.1
 Flask-Migrate==2.2.1
 Flask-SQLAlchemy==2.3.2
 Jinja2==2.10.1
-Mako==1.0.14
+Mako==1.2.2
 MarkupSafe==1.1.1
 SQLAlchemy==1.3.6
 Werkzeug==0.15.5
